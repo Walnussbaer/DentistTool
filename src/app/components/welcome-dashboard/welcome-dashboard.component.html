@@ -1,4 +1,4 @@
-<mat-grid-list cols="3" rowHeight="400px">
+<mat-grid-list cols="1" rowHeight="400px">
     <mat-grid-tile>
         <mat-card class="dashboard-card">
 
@@ -12,7 +12,7 @@
             </mat-card-content>
         
             <mat-card-actions>
-                <button mat-button>Tool starten</button>
+                <button mat-raised-button [routerLink]="['/treatment-preparation']">Tool starten</button>
             </mat-card-actions>
         </mat-card>
     </mat-grid-tile>
