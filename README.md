@@ -1,5 +1,7 @@
 # DentistTool
 
+A small tool I'm developing for my parents to help them during they daily routine in their dental clinic. 
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.4.
 
 ## Development server
