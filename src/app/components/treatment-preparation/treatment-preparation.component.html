@@ -1,7 +1,11 @@
-<div class="content-div">
+<mat-toolbar>
+    <span class="accent-text">Behandlungsunterstützung</span>
+    <button style="margin-left:10px;" mat-raised-button [routerLink]="['/dashbaord']">Zurück</button>
+</mat-toolbar>
 
-    <h2>Behandlungsvorbereitung</h2>
+<mat-grid-list cols=1 rowHeight=500px>
+    <mat-grid-tile>
+        <timer-component></timer-component>
+    </mat-grid-tile>
+</mat-grid-list>
 
-    <button mat-raised-button [routerLink]="['/dashbaord']">Zurück</button>
-
-</div>

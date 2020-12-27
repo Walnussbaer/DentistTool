@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list'; 
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list'; 
+import {MatToolbarModule} from '@angular/material/toolbar'; 
 
 
 
@@ -15,8 +18,10 @@ import {MatGridListModule} from '@angular/material/grid-list';
   exports: [
     MatCardModule,
     MatButtonModule,
-    MatGridListModule
-
+    MatGridListModule,
+    MatDividerModule,
+    MatListModule,
+    MatToolbarModule,
   ]
 })
 export class SharedModule { }

@@ -8,7 +8,33 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
     border-style: solid;
     border-color: black;
-    border: 1px solid black;
+    border: 5px solid black;
     margin: 30px;
+    padding: 20px;
 
+}
+
+.accent-text {
+    color: green;
+}
+
+.action-button {
+
+    margin: 10px !important;
+
+}
+
+.timer-style {
+
+    font-size: 60pt;
+    padding: 30px;
+    border: 2px solid red;
+    border-radius: 20%;
+    text-align: center;
+
+}
+
+.my-divider {
+
+    margin-top:10px;
 }
