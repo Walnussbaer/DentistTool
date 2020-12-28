@@ -12,6 +12,9 @@ import {MatIconModule} from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
+import {MatProgressBarModule} from '@angular/material/progress-bar'; 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {MatTooltipModule} from '@angular/material/tooltip'; 
 
 
 
@@ -32,7 +35,10 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatIconModule,
     FormsModule,
     MatSlideToggleModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+    FontAwesomeModule,
+    MatTooltipModule
   ]
 })
 export class SharedModule { }

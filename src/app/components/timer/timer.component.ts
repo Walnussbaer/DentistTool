@@ -1,9 +1,11 @@
-import {ChangeDetectorRef, Component, NgZone, OnChanges, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, Input, NgZone, OnChanges, OnInit } from '@angular/core';
 import {MatSnackBar, MatSnackBarConfig, MatSnackBarModule} from '@angular/material/snack-bar'; 
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';  
 import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
+import {MatProgressBarModule, ProgressBarMode} from '@angular/material/progress-bar'; 
+import { faPlay, faStop,faHistory, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import {MatTooltipModule} from '@angular/material/tooltip'; 
 
 @Component({
   selector: 'timer-component',
@@ -12,8 +14,19 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 })
 export class TimerComponent implements OnInit, OnChanges {
 
-  /** stores the string that displays the elapsed time on the timer */
-  timerTime: string = "00:00";
+  /** caption of the timer */
+  @Input() caption: string;
+
+  /** icon for start timer button */
+  faPlay: IconDefinition = faPlay;
+
+  /** icon for stop timer button*/
+  faStop: IconDefinition = faStop;
+
+  /** icon for reset timer button */
+  faHistory: IconDefinition = faHistory;
+
+  progressBarMode: ProgressBarMode = "buffer"; 
 
   /** stores the number of elapsed miliseconds since start when the user pressed the start button */
   elapsedMs: number = 0; 
@@ -27,27 +40,24 @@ export class TimerComponent implements OnInit, OnChanges {
   /** config object for all snackbars of this component */
   private snackbarConfig: MatSnackBarConfig<any> = {
     horizontalPosition: 'center',
-    verticalPosition: "top",
+    verticalPosition: "bottom",
     duration: 4000, //4000 ms
   };
 
+  /** caption for the button of the snackar which can close the snackbar */
+  private snackbarActionLabel: string = "Okay"
+
   /** indicates whether the timer is working (as stoppwatch or actual timer) */
   public timerRunning: boolean = false;
+
+  /** indicates whether a previously runned timer is just stopped */
+  public timerStopped: boolean = false;
 
   /**uses the timer component as an actual timer (with a predefined time to elapse) */
   public useAsTimer: boolean = true;
 
   /** plays a sound sample when this component is used as a timer and the user defined time has elapsed */
   public playEndOfTimerSoundSample: boolean = true;
-
-  /** caption for the button of the snackar which can close the snackbar */
-  private snackbarActionLabel: string = "Okay"
-
-  public startButtonLabel: string = "Zeit starten"
-
-  public stopResumeButtonLabel: string = "Zeit stoppen"
-
-  public resetButtonLabel: string = "Zeit zurücksetzen"
 
   /** constructor of this component. Intializes a service for using Angular Material SnackBars */
   constructor(private _snackBar: MatSnackBar) { }
@@ -59,12 +69,24 @@ export class TimerComponent implements OnInit, OnChanges {
   }
 
   /**
+   * Gets executed when the toggle to switch between timer and stopwatch is used by ther user. 
+   */
+  switchTimerContext(){
+    if (this.configuredStopTime <= 0 && this.useAsTimer==true){
+      this.configuredStopTime = 60;
+    }
+  }
+
+  /**
    * Gets executed when the user starts the timer. 
    */
   startTimer(){
 
     /** the time when the user pressed the "Start" button*/ 
     let startTime: number = Date.now();
+
+    // stop any previous interval execution
+    clearInterval(this.timerIntervalId);
 
     this.elapsedMs = 0;
 
@@ -74,6 +96,7 @@ export class TimerComponent implements OnInit, OnChanges {
     },25); // calculate difference "only" every second so we can maintain a good performance
 
     this.timerRunning = true;
+    this.progressBarMode = "indeterminate";
 
     console.log("Timer started");
     this._snackBar.open("Timer wurde gestartet",this.snackbarActionLabel,this.snackbarConfig);
@@ -88,6 +111,8 @@ export class TimerComponent implements OnInit, OnChanges {
     clearInterval(this.timerIntervalId);
 
     this.timerRunning = false;
+    this.progressBarMode = "buffer";
+    this.timerStopped = true;
 
     console.log("Timer stopped");
     this._snackBar.open("Timer wurde gestoppt",this.snackbarActionLabel,this.snackbarConfig);
@@ -103,6 +128,7 @@ export class TimerComponent implements OnInit, OnChanges {
     
     this.timerRunning = false;
     this.elapsedMs=0;
+    this.progressBarMode = "buffer";
 
     console.log("Timer reset");
     this._snackBar.open("Timer wurde zurückgesetzt",this.snackbarActionLabel,this.snackbarConfig);

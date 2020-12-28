@@ -1,8 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
 
 .content-div {
 
@@ -11,11 +8,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     border: 5px solid black;
     margin: 30px;
     padding: 20px;
-    width: 500px;
+    width: 450px;
     text-align: center !important;
     justify-content: center;
     align-items: center;
+    border-radius: 10%;
+    background-color:lightgreen;
+    
 
+}
+
+h1,h2,h3,p {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
 }
 
 .accent-text {
@@ -28,13 +32,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 }
 
-.timer-style {
+.timerface {
 
-    font-size: 60pt;
-    padding: 30px;
-    border: 2px solid red;
-    border-radius: 20%;
+    font-size: 40pt;
+    padding: 25px;
+    border-bottom: 6px solid green;
     text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: lightgrey;
+    color: green;
 
 }
 

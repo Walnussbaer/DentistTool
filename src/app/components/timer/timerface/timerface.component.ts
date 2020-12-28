@@ -97,7 +97,7 @@ export class TimerfaceComponent implements OnInit, OnChanges {
     }
 
 
-    formattedTime = hours + ":" + preformatedMinutes + ":" + preformatedSeconds + ":" + preformatedRemainingMiliseconds;
+    formattedTime = hours + " : " + preformatedMinutes + " : " + preformatedSeconds + " : " + preformatedRemainingMiliseconds;
     return formattedTime;
   }
 
