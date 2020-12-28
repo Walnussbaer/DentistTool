@@ -7,7 +7,10 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list'; 
 import {MatToolbarModule} from '@angular/material/toolbar'; 
 import {MatSnackBarModule} from '@angular/material/snack-bar'; 
-
+import {MatInputModule} from '@angular/material/input'; 
+import {MatIconModule} from '@angular/material/icon'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
 
 
 
@@ -23,7 +26,11 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatDividerModule,
     MatListModule,
     MatToolbarModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatInputModule,
+    MatIconModule,
+    FormsModule,
+    MatSlideToggleModule
   ]
 })
 export class SharedModule { }

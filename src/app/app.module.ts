@@ -9,13 +9,15 @@ import { SharedModule } from './shared/shared/shared.module';
 import { MatButtonModule } from '@angular/material/button';
 import { TreatmentPreparationComponent } from './components/treatment-preparation/treatment-preparation.component';
 import { TimerComponent } from './components/timer/timer.component';
+import { TimerfaceComponent } from './components/timer/timerface/timerface.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeDashboardComponent,
     TreatmentPreparationComponent,
-    TimerComponent
+    TimerComponent,
+    TimerfaceComponent
   ],
   imports: [
     BrowserModule,

@@ -2,14 +2,58 @@
 
     <h2 style="justify-content: center;text-align:center">Zeitmessung Mundspülung</h2>
 
-    <p id="timerLabel" class="timer-style">{{timerTime}}<p>
+    <timerface [elapsedMiliseconds]="elapsedMs"></timerface>
 
-    <button class="action-button" (click)="startTimer()" color="primary" mat-raised-button>Zeit starten</button>
+    <!-- button section -->
+    <button class="action-button" (click)="startTimer()" color="primary" mat-raised-button>{{startButtonLabel}}</button>
 
-    <button class="action-button" (click)="stopTimer()" color="accent" mat-raised-button>Zeit stoppen</button>
+    <button class="action-button" (click)="stopTimer()" color="accent" mat-raised-button>{{stopResumeButtonLabel}}</button>
 
-    <button class="action-button" (click)="resetTimer()" color="warn" mat-raised-button>Zurücksetzen</button>
+    <button class="action-button" (click)="resetTimer()" color="warn" mat-raised-button>{{resetButtonLabel}}</button>
 
+    <mat-divider class="my-divider"></mat-divider>
+
+    <!-- config section, viewed in a grid layout -->
+    <div id="config" style="margin-top: 20px;">
+
+        <mat-grid-list cols="2" rowHeight="100px">
+
+            <mat-grid-tile>
+
+                <mat-slide-toggle [disabled]="false" [(ngModel)]="useAsTimer" name="enableTimer">
+                    Als Stoppuhr verwenden
+                </mat-slide-toggle>
+
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+
+                <mat-form-field *ngIf="useAsTimer">
+                    <mat-label>Stoppzeit</mat-label>
+                    <input matInput type="number" [(ngModel)]="configuredStopTime">
+                    <button mat-button *ngIf="configuredStopTime" matSuffix mat-icon-button aria-label="Clear" (click)="configuredStopTime=0">
+                    <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>   
+
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+
+                <mat-slide-toggle *ngIf="useAsTimer" [disabled]="false" [checked]="true" [(ngModel)]="playEndOfTimerSoundSample" name="enableTimerSoundSample">
+                    Soundsample verwenden
+                </mat-slide-toggle>
+
+            </mat-grid-tile>
+
+        </mat-grid-list>
+
+    </div>
+    
     <mat-divider class="my-divider"></mat-divider>
 
 </div>
