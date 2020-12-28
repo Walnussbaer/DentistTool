@@ -6,6 +6,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list'; 
 import {MatToolbarModule} from '@angular/material/toolbar'; 
+import {MatSnackBarModule} from '@angular/material/snack-bar'; 
 
 
 
@@ -22,6 +23,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatDividerModule,
     MatListModule,
     MatToolbarModule,
+    MatSnackBarModule
   ]
 })
 export class SharedModule { }
