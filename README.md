@@ -1,8 +1,12 @@
 # DentistTool
 
-A small tool I'm developing for my parents to help them during they daily routine in their dental clinic. 
+## Description
+
+A small tool I'm developing for my parents to help them during their daily routine in their dental clinic. 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.4.
+
+The rest of this readme contains (slightly customized) standard content of a project that was generated using the Angular CLI. 
 
 ## Development server
 
@@ -10,7 +14,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng generate component \components\[component-name]` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
