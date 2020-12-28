@@ -1,8 +1,10 @@
 <div class="content-div">
 
-    <h2 style="justify-content: center;text-align:center">Zeitmessung Mundspülung</h2>
+    <h2 style="text-align:center">Zeitmessung Mundspülung</h2>
 
     <timerface [elapsedMiliseconds]="elapsedMs"></timerface>
+
+    <mat-spinner style="margin:0 auto;" *ngIf="timerRunning"></mat-spinner>
 
     <!-- button section -->
     <button class="action-button" (click)="startTimer()" color="primary" mat-raised-button>{{startButtonLabel}}</button>

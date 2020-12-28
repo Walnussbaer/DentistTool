@@ -3,6 +3,7 @@ import {MatSnackBar, MatSnackBarConfig, MatSnackBarModule} from '@angular/materi
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';  
 import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
 
 @Component({
   selector: 'timer-component',
@@ -29,6 +30,9 @@ export class TimerComponent implements OnInit, OnChanges {
     verticalPosition: "top",
     duration: 4000, //4000 ms
   };
+
+  /** indicates whether the timer is working (as stoppwatch or actual timer) */
+  public timerRunning: boolean = false;
 
   /**uses the timer component as an actual timer (with a predefined time to elapse) */
   public useAsTimer: boolean = true;
@@ -69,6 +73,8 @@ export class TimerComponent implements OnInit, OnChanges {
       this.elapsedMs = Date.now() - startTime;
     },25); // calculate difference "only" every second so we can maintain a good performance
 
+    this.timerRunning = true;
+
     console.log("Timer started");
     this._snackBar.open("Timer wurde gestartet",this.snackbarActionLabel,this.snackbarConfig);
 
@@ -80,6 +86,8 @@ export class TimerComponent implements OnInit, OnChanges {
   stopTimer(){
 
     clearInterval(this.timerIntervalId);
+
+    this.timerRunning = false;
 
     console.log("Timer stopped");
     this._snackBar.open("Timer wurde gestoppt",this.snackbarActionLabel,this.snackbarConfig);
@@ -93,6 +101,7 @@ export class TimerComponent implements OnInit, OnChanges {
 
     clearInterval(this.timerIntervalId);
     
+    this.timerRunning = false;
     this.elapsedMs=0;
 
     console.log("Timer reset");

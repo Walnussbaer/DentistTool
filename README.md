@@ -6,6 +6,18 @@ A small tool I'm developing for my parents to help them during their daily routi
 
 This project also serves as a training project for myself to practice Angular. 
 
+### Functions
+
+This tool can do the following: 
+
+- use as stopppwatch (done)
+- use as timer (WIP)
+- configure timer (WIP)
+- play soundsamples at the end of timer (planned)
+
+
+### More information
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.4.
 
 The rest of this readme contains (slightly customized) standard content of a project that was generated using the Angular CLI. 

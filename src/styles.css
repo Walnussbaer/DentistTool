@@ -12,7 +12,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     margin: 30px;
     padding: 20px;
     width: 500px;
-    text-align: center;
+    text-align: center !important;
+    justify-content: center;
+    align-items: center;
 
 }
 

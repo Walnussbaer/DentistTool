@@ -11,6 +11,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon'; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
 
 
 
@@ -30,7 +31,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatInputModule,
     MatIconModule,
     FormsModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatProgressSpinnerModule
   ]
 })
 export class SharedModule { }
