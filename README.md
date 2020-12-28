@@ -10,7 +10,7 @@ This project also serves as a training project for myself to practice Angular.
 
 This tool can do the following: 
 
-- use as stopppwatch (done)
+- use as stoppwatch (done)
 - use as timer (WIP)
 - configure timer (WIP)
 - play soundsamples at the end of timer (planned)
