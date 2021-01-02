@@ -236,7 +236,7 @@ export class TimerComponent implements OnInit, OnChanges {
     // calculate difference between current time and start time
     this.timeGadgetIntervalId = window.setInterval(() => {
       this.milisecondsToShow = Date.now() - startTime;
-    },25); // calculate difference "only" every second so we can maintain a good performance
+    },25); // calculate difference "only" every 25ms so we can maintain a good performance
 
     this.timeGadgetRunning = true;
     this.progressBarMode = "indeterminate";
@@ -305,7 +305,7 @@ export class TimerComponent implements OnInit, OnChanges {
         this.milisecondsToShow = timeToRun - elapsedMs;
         this.timerProgress = elapsedMs / timeToRun * 100;
       }
-    },25); // calculate difference "only" every second so we can maintain a good performance
+    },25); // calculate difference "only" every 25ms so we can maintain a good performance
   }
 
   /**
