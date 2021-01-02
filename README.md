@@ -14,6 +14,9 @@ This tool can do the following:
 - use as timer (done)
 - configure timer (done)
 - play soundsamples at the end of timer (done)
+
+### ToDo
+
 - use more Observables for cleaner code (WIP)
 
 ### More information
