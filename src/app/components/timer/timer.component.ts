@@ -50,7 +50,7 @@ export class TimerComponent implements OnInit, OnChanges {
   public timerStopped: boolean = false;
 
   /** plays a sound sample when this component is used as a timer and the user defined time has elapsed */
-  public playEndOfTimerSoundSample: boolean = true;
+  public playEndOfTimerSoundSamples: boolean = true;
 
   /** the form control for the miliseconds input for the timer */
   public timerInputFormControl = new FormControl(60,[
@@ -71,6 +71,15 @@ export class TimerComponent implements OnInit, OnChanges {
 
   /** caption for the button of the snackar which can close the snackbar */
   private snackbarActionLabel: string = "Okay"
+
+  /** location for announcment sound sample file*/
+  private announcementSoundSampleLocation: string = "../../assets/sounds/endOfTimerSoundSample.mp3"; 
+
+  /** location for gong sound sample file */
+  private gongSoundSampleLocation: string = "../../assets/sounds/gongSound.mp3";
+
+  /** location for the merged sound file of announcment and gong */
+  private mergeSoundFileLocation: string = "../../assets/sounds/mergedEndOfTimerSoundSample.mp3";
 
   /** constructor of this component. Intializes a service for using Angular Material SnackBars */
   constructor(private _snackBar: MatSnackBar) { }
@@ -160,7 +169,7 @@ export class TimerComponent implements OnInit, OnChanges {
     clearInterval(this.timeGadgetIntervalId);
 
     this.timeGadgetRunning = false;
-    this.progressBarMode = "buffer";
+    this.resetProgressBar();
 
     switch (this.currentMode){
       case TimeGadgetMode.STOPWATCH: {
@@ -184,7 +193,7 @@ export class TimerComponent implements OnInit, OnChanges {
 
     clearInterval(this.timeGadgetIntervalId);
     this.timeGadgetRunning = false;
-    this.progressBarMode = "buffer";
+    this.resetProgressBar();
 
     switch (this.currentMode){
       case TimeGadgetMode.STOPWATCH: {
@@ -268,6 +277,8 @@ export class TimerComponent implements OnInit, OnChanges {
 
     var elapsedMs: number;
     var timeToRun = this.timerInputFormControl.value * 1000;
+    var gongAudio: HTMLAudioElement;
+    var announcmentAudio: HTMLAudioElement;
 
     this.timerInputFormControl.disable(); //TODO: implement observable in timerface component so that we don't have to disable and enable is manually
     this.progressBarMode = "determinate";
@@ -283,8 +294,8 @@ export class TimerComponent implements OnInit, OnChanges {
 
         this.resetTimerFace();
 
-        if (this.playEndOfTimerSoundSample == true){
-          this.playSoundSample();
+        if (this.playEndOfTimerSoundSamples == true){
+          this.playSoundSample(this.mergeSoundFileLocation);
         }
         this.timerProgress = 100;
         this.timeGadgetRunning = false;
@@ -302,7 +313,7 @@ export class TimerComponent implements OnInit, OnChanges {
    */
   private stopTimer(){
 
-    this.timerProgress = 0;
+    this.resetProgressBar();
 
     console.log("Timer stopped");
     this._snackBar.open("Timer wurde gestoppt",this.snackbarActionLabel,this.snackbarConfig);
@@ -313,9 +324,8 @@ export class TimerComponent implements OnInit, OnChanges {
    * Gets executed when the user presses the reset button and the mode is set to timer. 
    */
   private resetTimer(){
-
-    this.timerProgress = 0;
-
+    
+    this.resetProgressBar();
     this.setTimerfaceFromUserInput();
     this.timerInputFormControl.enable();
 
@@ -324,14 +334,27 @@ export class TimerComponent implements OnInit, OnChanges {
 
   }
 
-  private playSoundSample(){
+  /**
+   * Resets progress bar to buffer mode. 
+   */
+  private resetProgressBar(){
 
-    console.log("Playing sound sample");
+    this.timerProgress = 0;
+    this.progressBarMode = "buffer";
+
+  }
+
+  private playSoundSample(soundSampleLocation: string): HTMLAudioElement{
+
+    console.log("Playing sound sample" + soundSampleLocation);
 
     let audio = new Audio();
-    audio.src = "../../assets/sounds/endOfTimerSoundSample.mp3";
+
+    audio.src = soundSampleLocation;
     audio.load();
     audio.play();
+
+    return audio;
 
   }
 

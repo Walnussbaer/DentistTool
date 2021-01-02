@@ -18,6 +18,8 @@ This tool can do the following:
 ### ToDo
 
 - use more Observables for cleaner code (WIP)
+- search for a second sound sample (gong sound) after timer has finished
+- add music to timer (optional)
 
 ### More information
 
