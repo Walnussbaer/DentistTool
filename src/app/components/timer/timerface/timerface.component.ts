@@ -8,10 +8,11 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 })
 export class TimerfaceComponent implements OnInit, OnChanges {
 
-  /** the count of elapsed miliseconds since a known start time */
-  @Input() elapsedMiliseconds : number;
+  /** the time to show expressed in miliseconds */
+  @Input() milisecondsToShow : number;
 
-  formatedElapsedMiliseconds: string; 
+  /** the time to show expressed in more human readable format */
+  formattedMilisecondsToShow: string; 
 
   constructor() { }
 
@@ -20,7 +21,7 @@ export class TimerfaceComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
 
-    this.formatedElapsedMiliseconds = this.formatTime(this.elapsedMiliseconds);
+    this.formattedMilisecondsToShow = this.formatTime(this.milisecondsToShow);
 
   }
 

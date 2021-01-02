@@ -2,57 +2,50 @@
 
     <h1 style="text-align:center">{{caption}}</h1>
 
-    <timerface [elapsedMiliseconds]="elapsedMs"></timerface>
+    <timerface [milisecondsToShow]="milisecondsToShow"></timerface>
 
-    <mat-progress-bar [mode]="progressBarMode"></mat-progress-bar>
+    <mat-progress-bar [mode]="progressBarMode" [value]="timerProgress"></mat-progress-bar>
 
     <!-- button section -->
-    <button [disabled]="configuredStopTime<=0" class="action-button" (click)="startTimer()" color="primary" matTooltip="Start" mat-raised-button>
+    <button [disabled]="timerInputFormControl.value<=0 && currentMode==0" class="action-button" (click)="runTimeGadget()" color="primary" matTooltip="Start" mat-raised-button>
         <fa-icon [icon]="faPlay"></fa-icon>
     </button>
 
-    <button [disabled]="configuredStopTime<=0" class="action-button" (click)="stopTimer()" color="accent" matTooltip="Stopp" mat-raised-button>
+    <button [disabled]="timerInputFormControl.value<=0" class="action-button" (click)="stopTimeGadget()" color="accent" matTooltip="Stopp" mat-raised-button>
         <fa-icon [icon]="faStop"></fa-icon>
     </button>
 
-    <button class="action-button" (click)="resetTimer()" color="warn" matTooltip="Zurücksetzen" mat-raised-button>
+    <button class="action-button" (click)="resetTimeGadget()" color="warn" matTooltip="Zurücksetzen" mat-raised-button>
         <fa-icon [icon]="faHistory"></fa-icon>
     </button>
 
     <mat-divider class="my-divider"></mat-divider>
 
-    <!-- config section, viewed in a grid layout -->
-    <div id="config" style="margin-top: 20px;">
+    <!-- to choose between driffent modes-->
+    <button class="action-button" (click)="onContextChange()" [disabled]="timeGadgetRunning" color="primary" matTooltip="Kontext wechseln" mat-raised-button>
+        {{contextChangeButtonLabel}}
+    </button>
+
+    <mat-divider class="my-divider"></mat-divider>
+
+
+    <!-- config section, viewed in a grid layout, dependend on chosen mode -->
+    <div id="timeGadgetConfig" *ngIf="currentMode==0" style="margin-top: 20px;">
 
         <mat-grid-list cols="2" rowHeight="100px">
-
             <mat-grid-tile>
 
-                <mat-slide-toggle (toggleChange)="switchTimerContext()" color="primary" [disabled]="false" [(ngModel)]="useAsTimer" name="enableTimer">
-                    Als Timer verwenden
-                </mat-slide-toggle>
-
-            </mat-grid-tile>
-
-            <mat-grid-tile>
-
-                <mat-form-field *ngIf="useAsTimer">
-                    <mat-label>Zu stoppende Zeit</mat-label>
-                    <input matInput type="number" [(ngModel)]="configuredStopTime">
-                    <button mat-button *ngIf="configuredStopTime" matSuffix mat-icon-button aria-label="Clear" (click)="configuredStopTime=0">
-                    <mat-icon>close</mat-icon>
-                    </button>
+                <mat-form-field>
+                    <mat-label>Zu stoppende Zeit in s</mat-label>
+                    <input matInput type="number" [formControl]="timerInputFormControl">
+                    <span matSuffix>s</span>
                 </mat-form-field>   
 
             </mat-grid-tile>
 
             <mat-grid-tile>
 
-            </mat-grid-tile>
-
-            <mat-grid-tile>
-
-                <mat-slide-toggle *ngIf="useAsTimer" color="primary" [disabled]="false" [checked]="true" [(ngModel)]="playEndOfTimerSoundSample" name="enableTimerSoundSample">
+                <mat-slide-toggle color="primary" [disabled]="false" [checked]="true" [(ngModel)]="playEndOfTimerSoundSample" name="enableTimerSoundSample">
                     Soundsample verwenden
                 </mat-slide-toggle>
 

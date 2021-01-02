@@ -15,6 +15,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar'; 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatTooltipModule} from '@angular/material/tooltip'; 
+import {MatButtonToggleModule} from '@angular/material/button-toggle'; 
 
 
 
@@ -34,11 +35,13 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatInputModule,
     MatIconModule,
     FormsModule,
+    ReactiveFormsModule,
     MatSlideToggleModule,
     MatProgressSpinnerModule,
     MatProgressBarModule,
     FontAwesomeModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatButtonToggleModule
   ]
 })
 export class SharedModule { }
