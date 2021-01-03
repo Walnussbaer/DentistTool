@@ -4,7 +4,7 @@
 
 A small tool I'm developing for my parents to help them during their daily routine in their dental clinic. 
 
-My parents needed a small tool that measures the time while the patient is doing a mouth wash with hydrogen peroxide before his/her treatment begings (this an extra security procedure because of COVID-19). They also had to say the same sentence over and over again after the predefined time of the mouth wash has elapsed. That's why we did a recording of this sentence and let my application play it after the timer has finished.
+My parents needed a small tool that measures the time while the patient is doing a mouth wash with hydrogen peroxide before his/her treatment begings (this an extra security procedure because of COVID-19). They also have to say the same sentence over and over again after the predefined time of the mouth wash has elapsed. That's why we did a recording of this sentence and let my application play it after the timer has finished.
 
 This project also serves as a training project for myself to practice Angular. 
 
