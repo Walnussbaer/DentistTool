@@ -55,7 +55,8 @@ export class TimerComponent implements OnInit, OnChanges {
   /** the form control for the miliseconds input for the timer */
   public timerInputFormControl = new FormControl(60,[
     Validators.required,
-    Validators.min(0)
+    Validators.min(0),
+    Validators.max(35999)
   ]);
 
 
@@ -79,7 +80,7 @@ export class TimerComponent implements OnInit, OnChanges {
   private gongSoundSampleLocation: string = "../../assets/sounds/gongSound.mp3";
 
   /** location for the merged sound file of announcment and gong */
-  private mergeSoundFileLocation: string = "../../assets/sounds/mergedEndOfTimerSoundSample.mp3";
+  private mergedSoundFileLocation: string = "../../assets/sounds/mergedEndOfTimerSoundSample.mp3";
 
   /** constructor of this component. Intializes a service for using Angular Material SnackBars */
   constructor(private _snackBar: MatSnackBar) { }
@@ -277,13 +278,12 @@ export class TimerComponent implements OnInit, OnChanges {
 
     var elapsedMs: number;
     var timeToRun = this.timerInputFormControl.value * 1000;
-    var gongAudio: HTMLAudioElement;
-    var announcmentAudio: HTMLAudioElement;
 
     this.timerInputFormControl.disable(); //TODO: implement observable in timerface component so that we don't have to disable and enable is manually
     this.progressBarMode = "determinate";
 
     this.timeGadgetRunning = true;
+    this._snackBar.open("Timer wurde gestartet",this.snackbarActionLabel,this.snackbarConfig);
 
     // calculate difference between current time and start time
     this.timeGadgetIntervalId = window.setInterval(() => {
@@ -295,12 +295,13 @@ export class TimerComponent implements OnInit, OnChanges {
         this.resetTimerFace();
 
         if (this.playEndOfTimerSoundSamples == true){
-          this.playSoundSample(this.mergeSoundFileLocation);
+          this.playSoundSample(this.mergedSoundFileLocation);
         }
         this.timerProgress = 100;
         this.timeGadgetRunning = false;
+        this.timerInputFormControl.enable();
         clearInterval(this.timeGadgetIntervalId);
-        
+      // else just calculate the remaining time  
       } else {
         this.milisecondsToShow = timeToRun - elapsedMs;
         this.timerProgress = elapsedMs / timeToRun * 100;
