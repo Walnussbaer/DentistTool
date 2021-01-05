@@ -72,9 +72,9 @@ export class TimerComponent implements OnInit, OnChanges {
 
   /** caption for the button of the snackar which can close the snackbar */
   private snackbarActionLabel: string = "Okay"
-  
+
   /** location for the merged sound file of announcment and gong */
-  private maleEndOfTimerAnnouncement_ger: string = "/assets/sounds/maleEndOfTimerAnnouncement_ger.mp3";
+  private maleEndOfTimerAnnouncement_ger: string = "./assets/sounds/maleEndOfTimerAnnouncement_ger.mp3";
 
   /** constructor of this component. Intializes a service for using Angular Material SnackBars */
   constructor(private _snackBar: MatSnackBar) { }
