@@ -72,15 +72,9 @@ export class TimerComponent implements OnInit, OnChanges {
 
   /** caption for the button of the snackar which can close the snackbar */
   private snackbarActionLabel: string = "Okay"
-
-  /** location for announcment sound sample file*/
-  private announcementSoundSampleLocation: string = "../../assets/sounds/endOfTimerSoundSample.mp3"; 
-
-  /** location for gong sound sample file */
-  private gongSoundSampleLocation: string = "../../assets/sounds/gongSound.mp3";
-
+  
   /** location for the merged sound file of announcment and gong */
-  private mergedSoundFileLocation: string = "../../assets/sounds/mergedEndOfTimerSoundSample.mp3";
+  private maleEndOfTimerAnnouncement_ger: string = "/assets/sounds/maleEndOfTimerAnnouncement_ger.mp3";
 
   /** constructor of this component. Intializes a service for using Angular Material SnackBars */
   constructor(private _snackBar: MatSnackBar) { }
@@ -295,7 +289,7 @@ export class TimerComponent implements OnInit, OnChanges {
         this.resetTimerFace();
 
         if (this.playEndOfTimerSoundSamples == true){
-          this.playSoundSample(this.mergedSoundFileLocation);
+          this.playSoundSample(this.maleEndOfTimerAnnouncement_ger);
         }
         this.timerProgress = 100;
         this.timeGadgetRunning = false;
