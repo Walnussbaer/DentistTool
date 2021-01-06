@@ -8,6 +8,7 @@ import { faPlay, faStop,faHistory, IconDefinition } from '@fortawesome/free-soli
 import {MatTooltipModule} from '@angular/material/tooltip'; 
 import {MatButtonToggleModule} from '@angular/material/button-toggle'; 
 import { FormControl, Validators } from '@angular/forms';
+import {MatRadioModule} from '@angular/material/radio'; 
 
 @Component({
   selector: 'timer-component',
@@ -18,6 +19,9 @@ export class TimerComponent implements OnInit, OnChanges {
 
   /** caption of the timer */
   @Input() caption: string;
+
+  /** the currently chosen type of annoucement to be played at the end of a set timer */
+  public chosenEndOfTimerAnnouncementType: EndOfTimerAnnouncementType = EndOfTimerAnnouncementType.MALE;
 
   /** the progess of the progress spinner in percent (only be used in timer mode) */
   public timerProgress: number = 0;
@@ -73,8 +77,11 @@ export class TimerComponent implements OnInit, OnChanges {
   /** caption for the button of the snackar which can close the snackbar */
   private snackbarActionLabel: string = "Okay"
 
-  /** location for the merged sound file of announcment and gong */
+  /** location for male end of timer announcement */
   private maleEndOfTimerAnnouncement_ger: string = "./assets/sounds/maleEndOfTimerAnnouncement_ger.mp3";
+
+  /** location for female end of timer announcement */
+  private femaleEndOfTimerAnnouncement_ger: string = "./assets/sounds/femaleEndOfTimerAnnouncement_ger.mp3";
 
   /** constructor of this component. Intializes a service for using Angular Material SnackBars */
   constructor(private _snackBar: MatSnackBar) { }
@@ -277,6 +284,7 @@ export class TimerComponent implements OnInit, OnChanges {
     this.progressBarMode = "determinate";
 
     this.timeGadgetRunning = true;
+    console.log("Timer started");
     this._snackBar.open("Timer wurde gestartet",this.snackbarActionLabel,this.snackbarConfig);
 
     // calculate difference between current time and start time
@@ -288,9 +296,24 @@ export class TimerComponent implements OnInit, OnChanges {
 
         this.resetTimerFace();
 
-        if (this.playEndOfTimerSoundSamples == true){
-          this.playSoundSample(this.maleEndOfTimerAnnouncement_ger);
+        switch (this.chosenEndOfTimerAnnouncementType){
+          case EndOfTimerAnnouncementType.NONE : {
+            // do nothing
+            break;
+          }
+          case EndOfTimerAnnouncementType.FEMALE : {
+            this.playSoundSample(this.femaleEndOfTimerAnnouncement_ger);
+            break;
+          }
+          case EndOfTimerAnnouncementType.MALE : {
+            this.playSoundSample(this.maleEndOfTimerAnnouncement_ger);
+          }
+          case EndOfTimerAnnouncementType.ENGLISH : {
+            // TODO: record english sound sample
+            break;
+          }
         }
+
         this.timerProgress = 100;
         this.timeGadgetRunning = false;
         this.timerInputFormControl.enable();
@@ -360,4 +383,12 @@ export enum TimeGadgetMode {
   TIMER = 0,
   STOPWATCH = 1,
 
+}
+
+export enum EndOfTimerAnnouncementType {
+
+  NONE = 0,
+  FEMALE = 1,
+  MALE = 2,
+  ENGLISH = 3
 }

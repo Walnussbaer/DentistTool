@@ -52,3 +52,14 @@ h1,h2,h3,p {
 .my-primary-button {
     background-color: green !important;
 } 
+
+.nice-radio-group {
+
+    display: flex;
+    flex-direction: column;
+}
+
+.nice-radio-button {
+
+    margin-bottom: 5px;
+}

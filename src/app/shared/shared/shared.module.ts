@@ -16,7 +16,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatTooltipModule} from '@angular/material/tooltip'; 
 import {MatButtonToggleModule} from '@angular/material/button-toggle'; 
-
+import {MatRadioModule} from '@angular/material/radio'; 
 
 
 @NgModule({
@@ -41,7 +41,9 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatProgressBarModule,
     FontAwesomeModule,
     MatTooltipModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatRadioModule,
+
   ]
 })
 export class SharedModule { }

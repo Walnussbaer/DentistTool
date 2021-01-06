@@ -46,10 +46,13 @@
 
             <mat-grid-tile>
 
-                <mat-slide-toggle matTooltip="Ansage am Ende des Timers an oder ausschalten" color="primary" [disabled]="false" [checked]="true"
-                    [(ngModel)]="playEndOfTimerSoundSamples" name="enableTimerSoundSample">
-                    Ansage verwenden
-                </mat-slide-toggle>
+                <!--radio buttons to choose between different announcements at the end of the timer-->
+                <mat-radio-group aria-label="Ansage wählen" color="primary" class="nice-radio-group" [(ngModel)]="chosenEndOfTimerAnnouncementType">
+                    <mat-radio-button class="nice-radio-button" [value]="0">Keine Ansage</mat-radio-button>
+                    <mat-radio-button class="nice-radio-button" [value]="1">Weibliche Stimme</mat-radio-button>
+                    <mat-radio-button class="nice-radio-button" [value]="2">Männliche Stimme</mat-radio-button>
+                    <mat-radio-button class="nice-radio-button" [value]="3" disabled>Englische Stimme</mat-radio-button>
+                </mat-radio-group>                  
 
             </mat-grid-tile>
 
