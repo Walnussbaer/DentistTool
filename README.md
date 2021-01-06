@@ -16,6 +16,7 @@ This tool can do the following:
 - use as timer (done)
 - configure timer (done)
 - play soundsamples at the end of timer (done)
+- choose between different voices for the end of timer soundsamples
 
 ### ToDo
 
