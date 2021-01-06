@@ -6,7 +6,9 @@ A small tool I'm developing for my parents to help them during their daily routi
 
 My parents needed a small tool that measures the time while the patient is doing a mouth wash with hydrogen peroxide before his/her treatment begings (this an extra security procedure because of COVID-19). They also have to say the same sentence over and over again after the predefined time of the mouth wash has elapsed. That's why we did a recording of this sentence and let my application play it after the timer has finished.
 
-This project also serves as a training project for myself to practice Angular. 
+With the tool, my parents can now concentrate on other things that are more important during treatment preparation instead of measuring the time themselves and think about that sentence they would have to say at the end of the mouth wash. 
+
+I believe that this small but helpful tool would be a great opportunity to develop using Angular, because I can use and practice a lof of the Angular design principles and functionalities, like component lifecycle, communication between components, Angular Material Design, angular routing and so on. Thus, this projects also serves as a training project for myself. 
 
 ### Functions
 
