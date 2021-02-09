@@ -15,7 +15,7 @@ const routes: Routes = [
   // default root
   {path: '', component: WelcomeDashboardComponent, pathMatch: 'full'},
   // wildcard root
-  {path: '', component: WelcomeDashboardComponent, pathMatch: 'full'}
+  {path: '**', component: WelcomeDashboardComponent, pathMatch: 'full'}
 ];
 
 @NgModule({
